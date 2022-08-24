@@ -1,0 +1,118 @@
+---
+// import * as Icon from '@astropub/icons'
+
+import Layout from "../layouts/Layout.astro";
+import Card from "../components/Card.astro";
+
+import ProductCard from "../components/ProductCard.svelte";
+import Products from "../components/Products.svelte";
+const title_slogan = "Lightweight, Sustainable, Strong Bricks";
+const para_body = `Brick is a core material that is commonly used to build
+						the wall of a building. Clay bricks are the most common
+						brick type. It is made from sand and clay and uniformly
+						burnt at temperatures between 800°C and 1200°C.`;
+---
+
+<Layout title="Adi Flyash Bricks">
+	<main>
+		<!-- Insert elements here -->
+		<!-- reminder: https://developer.mozilla.org/en-US/docs/Glossary/Grid_Lines, https://robleto.medium.com/how-to-set-internal-border-lines-on-a-css-grid-layout-f2f1eeaafb61 -->
+		<div class="grid-container section-1 bg-gray-300">
+			<div class="left-top text-gray-400 pt-7 ">
+				<a href="#" class="inline-block text-gray-700 ml-7"><p>Home</p></a>
+				<a href="#section2" class="inline-block"><p>Products</p></a>
+				<a href="#" class="inline-block"><p>Contact Us</p></a>
+				<a href="#" class="inline-block"><p>About Us</p></a>
+			</div>
+			<div class="right-top p-[6vw]">
+				<div class="contents">
+					<h1 class="text-5xl leading-[4rem] max-w-[95%]">
+						{title_slogan}
+					</h1>
+					<h2 class="text-base">
+						{para_body}
+					</h2>
+					<a href="#section2"
+						><button
+							class="bg-zinc-600 py-3 px-8 rounded-lg text-white font-rubik text-2xl font-extrabold mt-5"
+						>
+							<p class="all-product inline-block">ALL PRODUCTS</p>
+							<!-- <Icon.ArrowRight class="inline-block" size="40" stroke-width="70" /> -->
+							<i
+								class="fi fi-rr-arrow-small-up inline-block relative top-[0.24rem] scale-125 ml-3"
+							></i>
+						</button>
+					</a>
+					<a href="#"
+						><button
+							class="ml-5 border-4 border-zinc-600 py-[0.60rem] px-8 rounded-lg text-zinc-600 font-rubik text-2xl font-extrabold mt-5"
+							><p>ABOUT US</p>
+						</button>
+					</a>
+				</div>
+			</div>
+			<div class="left-bottom"></div>
+			<div class="right-bottom"></div>
+		</div>
+		<div class="section-2" id="section2">
+			<Products client:load />
+		</div>
+	</main>
+</Layout>
+
+<style>
+	/* add mobile layout */
+	.section-1 {
+		height: 100vh;
+		width: 100vw;
+	}
+
+	.section-2 {
+		height: 100vh;
+		width: 100vw;
+	}
+
+	.grid-container {
+		display: grid;
+		grid-template-columns: 1fr 1.7fr;
+		grid-template-rows: 1.7fr 1fr;
+		gap: 3px 3px;
+		grid-auto-flow: row;
+		grid-template-areas:
+			"left-top right-top"
+			"left-bottom right-bottom";
+	}
+
+	.left-top {
+		grid-area: left-top;
+	}
+
+	.right-top {
+		grid-area: right-top;
+	}
+
+	.left-bottom {
+		grid-area: left-bottom;
+	}
+
+	.right-bottom {
+		grid-area: right-bottom;
+	}
+
+	.left-top,
+	.left-bottom,
+	.right-bottom,
+	.right-top {
+		background-color: #fff;
+	}
+
+	.all-product {
+		content: "HELLO";
+	}
+
+	.left-top > a {
+		padding-left: 2rem;
+		font-weight: 800;
+		font-size: 0.85rem;
+	}
+</style>
